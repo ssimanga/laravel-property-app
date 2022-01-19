@@ -5,7 +5,7 @@
     <div class="card-header">
         <h3 class="card-title">Add New Agent</h3>
     </div>
-    <form action="/user/create" method="POST" enctype="multipart/form-data">
+    <form action="/user" method="POST" enctype="multipart/form-data">
         {{csrf_field()}}
         <div class="card-body">
             <div class="form-group">
