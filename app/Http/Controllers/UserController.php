@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Agent;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -17,7 +18,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
         $user->save();
         $agent = new Agent();
         $agent->phone = $request->phone;
@@ -30,7 +31,7 @@ class UserController extends Controller
             $agent->photo = $filename;
         }
         $user->agent()->save($agent);
-        return redirect()->back()-with('status','agent successfully added');
+        return redirect('/user');
     }
     public function edit(User $user){
         return view('users.edit',compact('user'));
