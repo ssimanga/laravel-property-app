@@ -24,10 +24,15 @@
                             <td>{{$user->email}}</td>
                             <td>{{$user->agent->phone}}</td>
                             <td>{{$user->agent->bio}}</td>
-                            <td>
-                                <a href=""></a>
-                                <a href=""></a>
-                                <a href=""></a>
+                            <td style="padding:5px;">
+                                <a href="/user/{{$user->id}}"><i class="fa fa-edit"></i></a>
+                                <a href="" class="ml-2"><i class="fa fa-eye text-success"></i></a>
+                                <form action="/user/{{$user->id}}" class=" ml-2">
+                                    <button type="submit" formmethod="POST">
+                                        <i class="fa fa-trash text-danger"></i>
+                                    </button>
+                                </form>
+                              
                             </td>
                         </tr>
                     @endforeach

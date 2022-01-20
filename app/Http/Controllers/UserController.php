@@ -32,4 +32,7 @@ class UserController extends Controller
         $user->agent()->save($agent);
         return redirect()->back()-with('status','agent successfully added');
     }
+    public function edit(User $user){
+        return view('users.edit',compact('user'));
+    }
 }
