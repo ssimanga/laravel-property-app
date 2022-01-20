@@ -21,6 +21,8 @@ Route::get('/', function () {
 Route::get('/user/create', function(){
     return view('users.create');
 });
+
+Route::get('/user',[UserController::class,'index']);
 Route::post('/user',[UserController::class, 'store']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
