@@ -36,4 +36,21 @@ class UserController extends Controller
     public function edit(User $user){
         return view('users.edit',compact('user'));
     }
+
+    public function update(Request $request, User $user, Agent $agent){
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+        $agent->phone = $request->phone;
+        $agent->bio = $request->bio;
+        // if($request->hasfile('photo')){
+        //     $file = $request->file('photo');
+        //     $ext = $file->getClientOriginalExtension();
+        //     $filename = time().'.'.$ext;
+        //     $file->move('uploads/agents', $filename);
+        //     $agent->photo = $filename;
+        // }
+        $user->agent()->save($agent);
+        return redirect('/user');
+    }
 }
