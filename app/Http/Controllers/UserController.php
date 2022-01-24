@@ -53,4 +53,8 @@ class UserController extends Controller
         $user->agent()->save($agent);
         return redirect('/user');
     }
+
+    public function Delete(Request $request, User $user, Agent $agent){
+        
+    }
 }
