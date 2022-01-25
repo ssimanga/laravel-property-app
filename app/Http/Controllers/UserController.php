@@ -15,6 +15,10 @@ class UserController extends Controller
         return view('users.index', compact('users'));
     }
 
+    public function Admin(){
+        return view('admin');
+    }
+
     public function Logout(){
         Auth::logout();
         return Redirect()->route('login');

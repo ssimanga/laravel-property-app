@@ -26,11 +26,12 @@ Route::get('/user/create', function(){
 
 Route::get('logout', [UserController::class,'Logout'])->name('logout');
 
-Route::get('/user',[UserController::class,'index']);
-Route::get('/user/{user}',[UserController::class,'edit']);
-Route::post('/user',[UserController::class, 'store']);
-Route::post('/user/{user}',[UserController::class, 'update']);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('admin');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/dashboard',[UserController::class,'Admin'])->name('dashboard');
+    
+    Route::get('/user',[UserController::class,'index']);
+    Route::get('/user/{user}',[UserController::class,'edit']);
+    Route::post('/user',[UserController::class, 'store']);
+    Route::post('/user/{user}',[UserController::class, 'update']);
+});
