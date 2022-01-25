@@ -38,6 +38,7 @@
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
+                <a href="registration">Register here</a>
 
                 <x-jet-button class="ml-4">
                     {{ __('Log in') }}

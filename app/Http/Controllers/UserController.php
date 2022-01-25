@@ -6,12 +6,22 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Agent;
 use Illuminate\Support\Facades\Hash;
+use Auth;
 
 class UserController extends Controller
 {
     public function index(){
         $users = User::latest()->get();
         return view('users.index', compact('users'));
+    }
+
+    public function Logout(){
+        Auth::logout();
+        return Redirect()->route('login');
+    }
+
+    public function Register(){
+        return Redirect()->route('register');
     }
 
     public function store(Request $request){

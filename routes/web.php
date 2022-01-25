@@ -15,12 +15,16 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('admin');
+    return view('auth.login');
 });
+
+Route::get('registration',[UserController::class, 'Register'])->name('registration');
 
 Route::get('/user/create', function(){
     return view('users.create');
 });
+
+Route::get('logout', [UserController::class,'Logout'])->name('logout');
 
 Route::get('/user',[UserController::class,'index']);
 Route::get('/user/{user}',[UserController::class,'edit']);
@@ -28,5 +32,5 @@ Route::post('/user',[UserController::class, 'store']);
 Route::post('/user/{user}',[UserController::class, 'update']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin');
 })->name('dashboard');
