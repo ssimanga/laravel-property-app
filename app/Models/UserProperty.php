@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class UserProperty extends Model
 {
     use HasFactory;
+    protected $table = 'user_properties';
+
     protected $fillable = [
         'user_id',
         'property_id'
