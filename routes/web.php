@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PropertyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +35,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/user/{user}',[UserController::class,'edit']);
     Route::post('/user',[UserController::class, 'store']);
     Route::post('/user/{user}',[UserController::class, 'update']);
+
+    Route::get('/property', [PropertyController::class,'create']);
 });

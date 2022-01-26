@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Agent;
+use App\Models\Property;
 
 class User extends Authenticatable
 {
@@ -32,6 +33,10 @@ class User extends Authenticatable
 
     public function agent(){
         return $this->hasOne(Agent::class);
+    }
+
+    public function property(){
+        return $this->belongsToMany(Property::class);
     }
 
     /**
