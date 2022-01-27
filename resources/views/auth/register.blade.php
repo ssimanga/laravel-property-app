@@ -1,3 +1,29 @@
+<form action="{{route('register') }}" method="POST" enctype="multipart/form-data">
+<div class="form-group">
+        <label for="">Name</label>
+        <input type="text" name="name" id="" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="">Email</label>
+        <input type="email" name="email" id="" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="">Password</label>
+        <input type="password" name="password" id="" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="">Phone</label>
+        <input type="text" name="phone" id="" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="">Bio</label>
+        <textarea name="bio" id="" cols="30" rows="10" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="file" name="photo" id="" class="form-control">
+    </div>
+    <input type="submit" value="Register" class="btn btn-primary">
+</form>
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
