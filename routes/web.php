@@ -37,4 +37,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('/user/{user}',[UserController::class, 'update']);
 
     Route::get('/property', [PropertyController::class,'create']);
+    Route::post('/property',[PropertyController::class,'store']);
 });

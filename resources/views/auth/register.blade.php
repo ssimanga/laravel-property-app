@@ -1,15 +1,58 @@
-<form action="{{route('register') }}" method="POST" enctype="multipart/form-data">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 3 | Dashboard</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="{{asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{{asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="{{asset('plugins/jqvmap/jqvmap.min.css')}}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{{asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
+  <!-- summernote -->
+  <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.css')}}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style>
+      form{
+          width: 600px;
+          margin:0 auto;
+      }
+  </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+<h1 style="text-align:center;">Register</h1>
+<form action="{{route('register')}}" method="POST" enctype="multipart/form-data">
+    @csrf
 <div class="form-group">
         <label for="">Name</label>
-        <input type="text" name="name" id="" class="form-control">
+        <input type="text" name="name" id="name" class="form-control">
     </div>
     <div class="form-group">
         <label for="">Email</label>
-        <input type="email" name="email" id="" class="form-control">
+        <input type="email" name="email" id="email" class="form-control">
     </div>
     <div class="form-group">
         <label for="">Password</label>
-        <input type="password" name="password" id="" class="form-control">
+        <input type="password" name="password" id="password" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="">Confirm Password</label>
+        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
     </div>
     <div class="form-group">
         <label for="">Phone</label>
@@ -22,65 +65,49 @@
     <div class="form-group">
         <input type="file" name="photo" id="" class="form-control">
     </div>
-    <input type="submit" value="Register" class="btn btn-primary">
+    <button type="submit" class="btn btn-primary">{{__('Register')}}</button>
+    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+            {{ __('Already registered?') }}
+    </a>
 </form>
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
 
-        <x-jet-validation-errors class="mb-4" />
+</div>
+<!-- ./wrapper -->
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+<!-- jQuery -->
+<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- ChartJS -->
+<script src="{{asset('plugins/chart.js/Chart.min.js')}}"></script>
+<!-- Sparkline -->
+<script src="{{asset('plugins/sparklines/sparkline.js')}}"></script>
+<!-- JQVMap -->
+<script src="{{asset('plugins/jqvmap/jquery.vmap.min.js')}}"></script>
+<script src="{{asset('plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+<!-- jQuery Knob Chart -->
+<script src="{{asset('plugins/jquery-knob/jquery.knob.min.js')}}"></script>
+<!-- daterangepicker -->
+<script src="{{asset('plugins/moment/moment.min.js')}}"></script>
+<script src="{{asset('plugins/daterangepicker/daterangepicker.js')}}"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{{asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+<!-- Summernote -->
+<script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
+<!-- overlayScrollbars -->
+<script src="{{asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{asset('dist/js/adminlte.js')}}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{asset('dist/js/demo.js')}}"></script>
+</body>
+</html>
 
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
-
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
-                            </div>
-                        </div>
-                    </x-jet-label>
-                </div>
-            @endif
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>

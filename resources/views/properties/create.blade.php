@@ -5,7 +5,8 @@
     <div class="card-header">
         <h3 class="card-title">Add New Agent</h3>
     </div>
-    <form action="/property/create" method="POST" enctype="multipart/form-data">
+    <form action="/property" method="POST" enctype="multipart/form-data">
+    @csrf
         <div class="form-group">
             <label for="">Title</label>
             <input type="text" name="name" id="" class="form-control">

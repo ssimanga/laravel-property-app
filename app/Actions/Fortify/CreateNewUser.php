@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use App\Models\Agent;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -27,10 +28,15 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
+        $agent = new Agent();
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
+            
         ]);
+        // return Agent::create([
+        //     ''
+        // ])
     }
 }
