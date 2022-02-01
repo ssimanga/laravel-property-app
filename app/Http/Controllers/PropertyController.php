@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Property;
+use Auth;
 
 class PropertyController extends Controller
 {
@@ -13,14 +14,27 @@ class PropertyController extends Controller
     }
 
     public function store(Request $request){
-        $property = new Property();
-        $property->user_id = auth()->user()->id;
-        $property->name = $request->name;
-        $property->type = $request->type;
-        $property->for = $request->for;
-        $property->description = $request->description;
-        //Photo goes here
-        $property->price = $request->price;
-        $property->address = $request->address;
+        
+        // if($files = $request->file('photo')){
+        //     foreach($files as $file){
+        //         $ext = $file->getClientOriginalExtension();
+        //         $filename = time().'.'.$ext;
+        //         $file->move('uploads/agents', $filename);
+        //         $path = 'uploads/properties/';
+        //         $url = $path.$filename;
+        //         $file->move($path, $filename);
+        //         $image[]=$url;
+        //     }
+        // }
+       Property::create([
+        //    'Photo' => implode('|', $image),
+           'Name' => $request->name,
+           'Type' => $request->type,
+           'for'=> $request->for,
+           'description' => $request->description,
+           'Address' => $request->address,
+           'Price' => $request->price,
+       ]);
+      
     }
 }

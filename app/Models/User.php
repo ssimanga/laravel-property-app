@@ -35,7 +35,7 @@ class User extends Authenticatable
         return $this->hasOne(Agent::class);
     }
 
-    public function property(){
+    public function properties(){
         return $this->belongsToMany(Property::class);
     }
 
