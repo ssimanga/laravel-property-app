@@ -39,7 +39,7 @@
             <input type="text" name="price" id="" class="form-control">
         </div>
         <div class="form-group">
-            <input type="file" name="photo[]" id="" class="form-control">
+            <input type="file" name="photo[]" multiple id="" class="form-control">
         </div>
         <div class="form-group">
             <input type="submit" value="Save" class="btn btn-primary">

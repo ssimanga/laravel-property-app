@@ -14,20 +14,18 @@ class PropertyController extends Controller
     }
 
     public function store(Request $request){
-        
-        // if($files = $request->file('photo')){
-        //     foreach($files as $file){
-        //         $ext = $file->getClientOriginalExtension();
-        //         $filename = time().'.'.$ext;
-        //         $file->move('uploads/agents', $filename);
-        //         $path = 'uploads/properties/';
-        //         $url = $path.$filename;
-        //         $file->move($path, $filename);
-        //         $image[]=$url;
-        //     }
-        // }
+       
+        if($request->hasfile('photo')){
+            foreach($request->file('photo') as $file){
+                $ext = $file->getClientOriginalExtension();
+                $filename = time().'.'.$ext;
+                $file->move('uploads/properties/', $filename);
+                $imgData[] = $filename;
+
+            }
+        }
        Property::create([
-        //    'Photo' => implode('|', $image),
+           'Photo' => json_encode($imgData),
            'Name' => $request->name,
            'Type' => $request->type,
            'for'=> $request->for,
