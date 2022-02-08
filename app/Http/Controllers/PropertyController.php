@@ -8,6 +8,10 @@ use Auth;
 
 class PropertyController extends Controller
 {
+    public function index(){
+        $properties = Property::latest()->get();
+        return view('properties.index', compact('properties'));
+    }
     
     public function create(){
         return view('properties.create');
